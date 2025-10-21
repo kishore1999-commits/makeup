@@ -1,0 +1,1115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Telugu Bridal Artistry</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --gap: 16px;
+      --thumb-width: 200px;
+      --thumb-height: 220px;
+      --sidebar-width: 280px;
+      --rose-gold: #b76e79;
+      --champagne: #f7e7ce;
+      --burgundy: #6b1b3d;
+      --blush: #ffc9d9;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #1a0a0f;
+      color: #fff;
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(183,110,121,.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139,67,87,.15) 0%, transparent 50%);
+      animation: bgShift 15s ease infinite;
+      z-index: 0;
+    }
+    @keyframes bgShift {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .8; transform: scale(1.1); }
+    }
+    .sidebar {
+      width: var(--sidebar-width);
+      background: linear-gradient(180deg, #2d0a1a 0%, #4a1b2e 40%, #6b1b3d 100%);
+      padding: 30px 24px;
+      box-shadow: 4px 0 40px rgba(183,110,121,.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      overflow-y: auto;
+      z-index: 100;
+      border-right: 2px solid rgba(183,110,121,.3);
+    }
+    .profile-pic {
+      width: 140px;
+      height: 180px;
+      border-radius: 50% 50% 50% 50%/60% 60% 40% 40%;
+      overflow: hidden;
+      box-shadow: 0 0 0 4px rgba(183,110,121,.4), 0 0 0 8px rgba(247,231,206,.2), 0 12px 40px rgba(183,110,121,.6);
+      cursor: pointer;
+      transition: all .5s;
+    }
+    .profile-pic:hover {
+      transform: scale(1.08) translateY(-8px);
+      box-shadow: 0 0 0 4px rgba(183,110,121,.6), 0 0 0 8px rgba(247,231,206,.3), 0 18px 60px rgba(183,110,121,.8);
+    }
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .artist-name {
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 20px;
+      text-align: center;
+      color: var(--champagne);
+      font-family: 'Playfair Display', serif;
+      text-shadow: 3px 3px 10px rgba(0,0,0,.6);
+      letter-spacing: 2px;
+    }
+    .artist-name::after {
+      content: '💄✨';
+      display: block;
+      font-size: 16px;
+      margin-top: 8px;
+    }
+    .social-icons {
+      margin-top: 24px;
+      display: flex;
+      gap: 16px;
+    }
+    .social-icons a {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      transition: all .4s;
+      background: rgba(247,231,206,.08);
+      backdrop-filter: blur(20px);
+      border: 2px solid rgba(183,110,121,.3);
+    }
+    .social-icons a:hover {
+      transform: translateY(-8px) scale(1.15) rotate(8deg);
+      box-shadow: 0 12px 30px rgba(0,0,0,.5);
+    }
+    .social-icons .youtube { color: var(--champagne); }
+    .social-icons .youtube:hover {
+      background: linear-gradient(135deg, #FF0000, #CC0000);
+      border-color: #FF0000;
+    }
+    .social-icons .instagram { color: var(--champagne); }
+    .social-icons .instagram:hover {
+      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      border-color: #e1306c;
+    }
+    .social-icons .mail { color: var(--champagne); }
+    .social-icons .mail:hover {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-color: #667eea;
+    }
+    .contact {
+      margin-top: 24px;
+      font-size: 13px;
+      color: rgba(247,231,206,.9);
+      text-align: center;
+      line-height: 2;
+      font-weight: 300;
+    }
+    .contact a {
+      color: var(--blush);
+      text-decoration: none;
+      transition: all .3s;
+    }
+    .contact a:hover { color: var(--rose-gold); }
+    .main {
+      margin-left: var(--sidebar-width);
+      width: calc(100% - var(--sidebar-width));
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 42vh;
+      overflow: hidden;
+    }
+    .banner video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      filter: brightness(.65);
+      transform: translate(-50%, -50%);
+    }
+    .section {
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .section.bridal-section {
+      background: linear-gradient(135deg, rgba(107,27,61,.85) 0%, rgba(183,110,121,.75) 100%), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1200') center/cover no-repeat fixed;
+    }
+    .section.party-section {
+      background: linear-gradient(135deg, rgba(139,67,87,.85) 0%, rgba(107,27,61,.75) 100%), url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200') center/cover no-repeat fixed;
+    }
+    .section.misc-section {
+      background: linear-gradient(135deg, rgba(183,110,121,.85) 0%, rgba(139,67,87,.75) 100%), url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=1200') center/cover no-repeat fixed;
+    }
+    .section h2 {
+      color: var(--champagne);
+      font-size: 36px;
+      margin-bottom: 12px;
+      font-family: 'Playfair Display', serif;
+      position: relative;
+      display: inline-block;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-shadow: 3px 3px 12px rgba(0,0,0,.5);
+    }
+    .section h2::before {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 70px;
+      height: 3px;
+      background: linear-gradient(to right, var(--rose-gold), var(--blush));
+      border-radius: 3px;
+    }
+    .section-subtitle {
+      color: rgba(247,231,206,.8);
+      font-size: 14px;
+      font-weight: 300;
+      margin-top: 12px;
+      margin-bottom: 25px;
+      letter-spacing: 1.5px;
+      line-height: 1.6;
+    }
+    .gallery {
+      display: flex;
+      gap: var(--gap);
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(247,231,206,.08) 0%, rgba(183,110,121,.1) 100%);
+      padding: 28px;
+      border-radius: 24px;
+      box-shadow: 0 8px 35px rgba(0,0,0,.4);
+      border: 2px solid rgba(183,110,121,.25);
+      backdrop-filter: blur(10px);
+      position: relative;
+      user-select: none;
+    }
+    .auto-scroll {
+      display: flex;
+      gap: var(--gap);
+      will-change: transform;
+    }
+    .gallery::-webkit-scrollbar {
+      height: 8px;
+    }
+    .gallery::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .gallery::-webkit-scrollbar-thumb {
+      background-color: var(--rose-gold);
+      border-radius: 4px;
+    }
+    .gallery:hover .auto-scroll {
+      animation-play-state: paused;
+    }
+    .thumb {
+      flex: 0 0 auto;
+      width: var(--thumb-width);
+      height: var(--thumb-height);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      margin-right: var(--gap);
+      box-shadow: 0 8px 25px rgba(0,0,0,.5);
+      transition: all .5s;
+      position: relative;
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .7s;
+      filter: brightness(.85);
+    }
+    .thumb:hover {
+      box-shadow: 0 18px 50px rgba(183,110,121,.6);
+      transform: translateY(-10px) scale(1.05);
+    }
+    .thumb:hover img {
+      transform: scale(1.2);
+      filter: brightness(1.05);
+    }
+    .thumb:hover::after {
+      content: '💄✨';
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 20px;
+      opacity: 0.8;
+      text-shadow: 0 0 10px rgba(183,110,121,.8);
+      transition: opacity .3s;
+    }
+    .testimonials {
+      padding: 35px 40px;
+      background: linear-gradient(135deg, rgba(45,10,26,.9) 0%, rgba(74,27,46,.8) 100%), url('https://images.unsplash.com/photo-1593529467220-9d721ceb9a78?w=1200') center/cover no-repeat fixed;
+      margin: 25px;
+      border-radius: 28px;
+      box-shadow: 0 15px 60px rgba(0,0,0,.5);
+      text-align: center;
+      border: 2px solid rgba(183,110,121,.3);
+      backdrop-filter: blur(10px);
+    }
+    .testimonials h2 {
+      margin-bottom: 30px;
+      font-size: 32px;
+      color: var(--champagne);
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding: 15px 10px;
+    }
+    .testimonial-card {
+      background: linear-gradient(135deg, rgba(247,231,206,.1) 0%, rgba(183,110,121,.08) 100%);
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 35px rgba(0,0,0,.4);
+      transition: all .5s;
+      border: 2px solid rgba(183,110,121,.2);
+    }
+    .testimonial-card::before {
+      content: '⭐⭐⭐⭐⭐';
+      display: block;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: var(--rose-gold);
+    }
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 18px;
+      color: rgba(247,231,206,.85);
+      line-height: 1.7;
+      font-size: 15px;
+      font-weight: 300;
+    }
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--blush);
+      font-size: 15px;
+      letter-spacing: 1.5px;
+    }
+    .connect-me {
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(107,27,61,.9) 0%, rgba(183,110,121,.8) 100%), url('https://images.unsplash.com/photo-1519643381402-8cd0e6650b99?w=1200') center/cover no-repeat fixed;
+      margin: 25px;
+      border-radius: 24px;
+      box-shadow: 0 8px 35px rgba(0,0,0,.4);
+      text-align: center;
+      border: 2px solid rgba(183,110,121,.3);
+      backdrop-filter: blur(10px);
+    }
+    .connect-me h2 {
+      margin-bottom: 12px;
+      font-size: 36px;
+      color: var(--champagne);
+    }
+    .connect-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .connect-form input,
+    .connect-form textarea {
+      padding: 12px 18px;
+      border: 2px solid rgba(183,110,121,.3);
+      border-radius: 12px;
+      font-size: 14px;
+      background: rgba(247,231,206,.08);
+      color: var(--champagne);
+      font-family: 'Poppins', sans-serif;
+      transition: all .3s;
+    }
+    .connect-form input:focus,
+    .connect-form textarea:focus {
+      outline: none;
+      border-color: var(--rose-gold);
+      background: rgba(247,231,206,.12);
+      box-shadow: 0 0 20px rgba(183,110,121,.4);
+    }
+    .connect-form input::placeholder,
+    .connect-form textarea::placeholder {
+      color: rgba(247,231,206,.5);
+    }
+    .connect-form textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+    .connect-form button {
+      padding: 12px 40px;
+      background: linear-gradient(135deg, var(--rose-gold) 0%, var(--burgundy) 100%);
+      color: #fff;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      transition: all .4s;
+      box-shadow: 0 8px 30px rgba(183,110,121,.5);
+    }
+    .connect-form button:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 15px 50px rgba(183,110,121,.7);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,.9);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-image {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 15px;
+      box-shadow: 0 0 80px rgba(183,110,121,.5);
+      animation: imgZoom .4s ease;
+      touch-action: none;
+    }
+    @keyframes imgZoom {
+      from { transform: scale(.8); opacity: .7; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .modal-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 40px;
+      pointer-events: none;
+    }
+    .modal-control {
+      background: rgba(183,110,121,.4);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(247,231,206,.5);
+      color: var(--champagne);
+      font-size: 36px;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      transition: all .3s;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+      z-index: 2100;
+    }
+    .modal-control:hover {
+      background: rgba(183,110,121,.7);
+      transform: scale(1.2);
+      box-shadow: 0 0 30px rgba(183,110,121,.8);
+    }
+    .close-modal {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      background: rgba(183,110,121,.4);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(247,231,206,.5);
+      color: var(--champagne);
+      font-size: 26px;
+      width: 52px;
+      height: 52px;
+      cursor: pointer;
+      transition: all .3s;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2100;
+    }
+    .close-modal:hover {
+      background: rgba(183,110,121,.7);
+      transform: scale(1.15) rotate(90deg);
+    }
+    /* Toast Styles */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(107, 27, 61, 0.9);
+      color: var(--champagne);
+      padding: 15px 30px;
+      border-radius: 25px;
+      box-shadow: 0 8px 20px rgba(183, 110, 121, 0.5);
+      z-index: 3000;
+      display: none;
+      font-size: 14px;
+      font-weight: 400;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(183, 110, 121, 0.3);
+    }
+    .toast.show {
+      display: block;
+      animation: fadeInOut 3s ease forwards;
+    }
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translate(-50%, 20px); }
+      10% { opacity: 1; transform: translate(-50%, 0); }
+      90% { opacity: 1; transform: translate(-50%, 0); }
+      100% { opacity: 0; transform: translate(-50%, 20px); }
+    }
+    @media (max-width: 900px) {
+      :root {
+        --sidebar-width: 100%;
+        --thumb-width: 150px;
+        --thumb-height: 165px;
+      }
+      body { flex-direction: column; }
+      .sidebar {
+        position: relative;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        height: auto;
+        padding: 20px;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .profile-pic { width: 80px; height: 100px; }
+      .artist-name { font-size: 20px; margin-top: 0; }
+      .main { margin-left: 0; width: 100%; }
+      .section { padding: 35px 20px; }
+      .section h2 { font-size: 30px; }
+      .testimonials, .connect-me { margin: 20px; padding: 35px 20px; }
+      .modal-controls { padding: 0 20px; }
+      .modal-control { width: 48px; height: 48px; font-size: 26px; }
+      .toast { width: 80%; font-size: 12px; padding: 10px 20px; }
+    }
+    @media (max-width: 1200px) {
+      .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .testimonial-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="profile-pic"><img src="https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/WhatsApp%20Image%202025-09-21%20at%204.32.37%20PM.jpeg" alt="Your Name"></div>
+    <div class="artist-name">Supriya.S</div>
+    <div class="social-icons">
+      <a href="mailto:Mua.supriya15@gmail.com" class="mail"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.instagram.com/mua_supriya15/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@SupriyaMua15" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+    </div>
+    <div class="contact">
+      <p>📍 Hyderabad</p>
+      <p>📧 <a href="mailto:Mua.supriya15@gmail.com">Mua.supriya15@gmail.com</a></p>
+      <p>📱 <a href="tel:+91 9505077744">+91 9505077744</a></p>
+    </div>
+  </div>
+  <div class="main">
+    <div class="banner">
+      <video autoplay muted loop playsinline>
+        <source src="https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/3bc2b99e-2eab-4bda-a351-bf8c3f59621c_fullscreen.mp4" type="video/mp4">
+      </video>
+    </div>
+    <!-- Bridal Section -->
+    <div class="section bridal-section">
+      <h2>💍 Bridal Makeup</h2>
+      <p class="section-subtitle">Exquisite bridal transformations</p>
+      <div class="gallery">
+        <div class="auto-scroll" id="gallery-bridal"></div>
+      </div>
+    </div>
+    <!-- Party Section -->
+    <div class="section party-section">
+      <h2>🎉 Party Makeup</h2>
+      <p class="section-subtitle">Glamorous party looks</p>
+      <div class="gallery">
+        <div class="auto-scroll" id="gallery-party"></div>
+      </div>
+    </div>
+    <!-- Misc Section -->
+    <div class="section misc-section">
+      <h2>✨ Miscellaneous</h2>
+      <p class="section-subtitle">Unique makeup styles</p>
+      <div class="gallery">
+        <div class="auto-scroll" id="gallery-misc"></div>
+      </div>
+    </div>
+    <!-- Testimonials Section -->
+    <div class="testimonials">
+      <h2>Testimonials</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-text">"Transformed me into a dream bride!"</div>
+          <div class="testimonial-author">Priya S.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-text">"Perfect makeup for my party!"</div>
+          <div class="testimonial-author">Anjali R.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-text">"Loved the creativity and attention to detail!"</div>
+          <div class="testimonial-author">Sneha K.</div>
+        </div>
+      </div>
+    </div>
+    <!-- Connect with Me Section -->
+    <div class="connect-me">
+      <h2>Let's Create the Magic Together ✨</h2>
+      <form class="connect-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden">
+          <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="contact" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal" id="imageModal">
+    <button class="close-modal" onclick="closeModal()">&times;</button>
+    <div class="modal-content">
+      <div class="modal-controls">
+        <button class="modal-control" onclick="prevImage()">‹</button>
+        <button class="modal-control" onclick="nextImage()">›</button>
+      </div>
+      <img src="" alt="" class="modal-image" id="modalImage">
+    </div>
+  </div>
+  <!-- Toast Notification -->
+  <div class="toast" id="toastMessage">Thanks for contacting! I'll get back to you soon.</div>
+  <script>
+    let galleries = {
+      bridal: {
+        0: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal1.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal2.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal3.jpg'
+        ],
+        1: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal11.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal12.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal13.jpg',
+        ],
+        2: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal21.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal22.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal23.jpg',
+        ],
+        3: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal31.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal32.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal33.jpg',
+        ],
+        4: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal41.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal42.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal43.jpg'
+        ],
+        5: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal51.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal52.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal53.jpg'
+        ],
+        6: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal61.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal62.jpg'
+        ],
+        7: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal71%20.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal72%20.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal73%20.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/bridal74%20.jpg'
+        ],
+      },
+      party: {
+        0: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party1.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party2.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party3.jpg'
+        ],
+        1: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party11.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party12.jpg',
+        ],
+        2: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party21.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party22.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party23.jpg',
+        ],
+        3: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party31.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party32.jpg'
+        ],
+        4: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party41.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party42.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party43.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party44.jpg',
+        ],
+        5: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party51.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party52.jpg',
+        ],
+        6: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party61.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party62.jpg',
+        ],
+        7: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party71.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/party72.jpg',
+        ]
+      },
+      misc: {
+        0: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc3.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc2.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc1.jpg',
+        ],
+        1: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc11.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc12.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc13.jpg',
+        ],
+        2: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc21.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc22.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc23.jpg',
+        ],
+        3: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc31.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc32.jpg'
+        ],
+        4: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc41.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc42.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc43.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc44.jpg',
+        ],
+        5: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc51.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc52.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc53.jpg'
+        ],
+        6: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc61.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc62.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc63.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc64.jpg',
+        ],
+        7: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc71.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc72.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc73.jpg',
+        ],
+        8: [
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc81.jpg',
+          'https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/misc82.jpg',
+        ]
+      }
+    };
+
+    let currentGallery = '';
+    let currentIdx = 0;
+    let currentSubIdx = 0;
+    let images = [];
+    const maxIdx = 8;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+    const minSwipeDistance = 50;
+
+    function openImage(idx, galleryType) {
+      console.log('Opening modal for gallery:', galleryType, 'index:', idx);
+      currentGallery = galleryType;
+      currentIdx = idx;
+      currentSubIdx = 0;
+      images = galleries[galleryType][idx];
+      const modalImage = document.getElementById('modalImage');
+      if (modalImage) {
+        modalImage.src = images[currentSubIdx];
+      } else {
+        console.error('Modal image element not found');
+      }
+      const modal = document.getElementById('imageModal');
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      } else {
+        console.error('Modal element not found');
+      }
+    }
+
+    function nextImage() {
+      console.log('Next image, currentSubIdx:', currentSubIdx, 'currentIdx:', currentIdx);
+      if (currentSubIdx < images.length - 1) {
+        currentSubIdx++;
+      } else {
+        currentIdx = (currentIdx + 1) % (maxIdx + 1);
+        currentSubIdx = 0;
+        images = galleries[currentGallery][currentIdx];
+        console.log('Moving to next index:', currentIdx);
+      }
+      const modalImage = document.getElementById('modalImage');
+      if (modalImage) {
+        modalImage.src = images[currentSubIdx];
+      } else {
+        console.error('Modal image element not found');
+      }
+    }
+
+    function prevImage() {
+      console.log('Previous image, currentSubIdx:', currentSubIdx, 'currentIdx:', currentIdx);
+      if (currentSubIdx > 0) {
+        currentSubIdx--;
+      } else {
+        currentIdx = (currentIdx - 1 + maxIdx + 1) % (maxIdx + 1);
+        images = galleries[currentGallery][currentIdx];
+        currentSubIdx = images.length - 1;
+        console.log('Moving to previous index:', currentIdx);
+      }
+      const modalImage = document.getElementById('modalImage');
+      if (modalImage) {
+        modalImage.src = images[currentSubIdx];
+      } else {
+        console.error('Modal image element not found');
+      }
+    }
+
+    function closeModal() {
+      console.log('Attempting to close modal');
+      const modal = document.getElementById('imageModal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        console.log('Modal closed successfully');
+      } else {
+        console.error('Modal element not found');
+      }
+    }
+
+    function setupInfiniteScroll(containerId, galleryData, galleryType) {
+      const container = document.getElementById(containerId);
+      const gallery = container.parentElement;
+      
+      if (!container) {
+        console.error(`Container ${containerId} not found`);
+        return;
+      }
+
+      const totalItems = Object.keys(galleryData).length;
+      const thumbWidth = 200 + 16;
+      let position = 0;
+      let isPaused = false;
+      let lastTime = performance.now();
+      const speed = 50;
+
+      for (let i = 0; i < totalItems * 3; i++) {
+        const idx = i % totalItems;
+        const thumbDiv = document.createElement('div');
+        thumbDiv.className = 'thumb';
+        
+        thumbDiv.addEventListener('click', function() {
+          openImage(idx, galleryType);
+        });
+        
+        const img = document.createElement('img');
+        img.src = galleryData[idx][0];
+        img.alt = `${galleryType.charAt(0).toUpperCase() + galleryType.slice(1)} makeup example ${idx + 1}`;
+        
+        thumbDiv.appendChild(img);
+        container.appendChild(thumbDiv);
+      }
+
+      function animate(currentTime) {
+        if (!isPaused) {
+          const deltaTime = (currentTime - lastTime) / 1000;
+          position += speed * deltaTime;
+          
+          const resetPoint = thumbWidth * totalItems;
+          if (position >= resetPoint) {
+            position = position % resetPoint;
+          }
+          
+          container.style.transform = `translateX(-${position}px)`;
+          container.style.transition = 'none';
+        }
+        
+        lastTime = currentTime;
+        requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+
+      gallery.addEventListener('mouseenter', () => {
+        isPaused = true;
+      });
+
+      gallery.addEventListener('mouseleave', () => {
+        isPaused = false;
+        lastTime = performance.now();
+      });
+
+      let isDragging = false;
+      let startX;
+      let scrollStart;
+
+      gallery.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.pageX;
+        scrollStart = position;
+        isPaused = true;
+        gallery.style.cursor = 'grabbing';
+      });
+
+      gallery.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX;
+        const walk = (startX - x);
+        position = scrollStart + walk;
+        
+        const resetPoint = thumbWidth * totalItems;
+        if (position < 0) position += resetPoint;
+        if (position >= resetPoint * 2) position -= resetPoint;
+        
+        container.style.transform = `translateX(-${position}px)`;
+      });
+
+      gallery.addEventListener('mouseup', () => {
+        isDragging = false;
+        gallery.style.cursor = 'grab';
+        setTimeout(() => {
+          isPaused = false;
+          lastTime = performance.now();
+        }, 300);
+      });
+
+      gallery.addEventListener('mouseleave', () => {
+        if (isDragging) {
+          isDragging = false;
+          gallery.style.cursor = 'grab';
+          setTimeout(() => {
+            isPaused = false;
+            lastTime = performance.now();
+          }, 300);
+        }
+      });
+
+      let touchStartX;
+      let touchScrollStart;
+
+      gallery.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].pageX;
+        touchScrollStart = position;
+        isPaused = true;
+      });
+
+      gallery.addEventListener('touchmove', (e) => {
+        const x = e.touches[0].pageX;
+        const walk = (touchStartX - x);
+        position = touchScrollStart + walk;
+        
+        const resetPoint = thumbWidth * totalItems;
+        if (position < 0) position += resetPoint;
+        if (position >= resetPoint * 2) position -= resetPoint;
+        
+        container.style.transform = `translateX(-${position}px)`;
+      });
+
+      gallery.addEventListener('touchend', () => {
+        setTimeout(() => {
+          isPaused = false;
+          lastTime = performance.now();
+        }, 300);
+      });
+
+      gallery.style.cursor = 'grab';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const closeButton = document.querySelector('.close-modal');
+      if (closeButton) {
+        closeButton.addEventListener('click', (e) => {
+          e.stopPropagation();
+          console.log('Close button clicked');
+          closeModal();
+        });
+        console.log('Close button listener added');
+      } else {
+        console.error('Close button not found');
+      }
+
+      const modal = document.getElementById('imageModal');
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            console.log('Modal background clicked, closing modal');
+            closeModal();
+          }
+        });
+      } else {
+        console.error('Modal element not found during initialization');
+      }
+
+      const modalImage = document.getElementById('modalImage');
+      if (modalImage) {
+        modalImage.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+          touchStartY = e.changedTouches[0].screenY;
+          console.log('Touch start at X:', touchStartX, 'Y:', touchStartY);
+        });
+
+        modalImage.addEventListener('touchend', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          touchEndY = e.changedTouches[0].screenY;
+          console.log('Touch end at X:', touchEndX, 'Y:', touchEndY);
+          handleSwipe();
+        });
+      } else {
+        console.error('Modal image element not found for swipe gestures');
+      }
+
+      const form = document.querySelector('.connect-form');
+      if (form) {
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const formData = new FormData(form);
+
+          fetch('/', {
+            method: 'POST',
+            body: formData
+          })
+            .then(response => {
+              if (response.ok) {
+                const toast = document.getElementById('toastMessage');
+                if (toast) {
+                  toast.classList.add('show');
+                  setTimeout(() => toast.classList.remove('show'), 3000); // Hide after 3 seconds
+                }
+                form.reset();
+              } else {
+                alert('There was an issue submitting your form. Please try again.');
+              }
+            })
+            .catch(error => {
+              alert('An error occurred. Please try again later.');
+            });
+        });
+      }
+
+      setupInfiniteScroll('gallery-bridal', galleries.bridal, 'bridal');
+      setupInfiniteScroll('gallery-party', galleries.party, 'party');
+      setupInfiniteScroll('gallery-misc', galleries.misc, 'misc');
+    });
+
+    function handleSwipe() {
+      const deltaX = touchEndX - touchStartX;
+      const deltaY = touchEndY - touchStartY;
+      const absDeltaX = Math.abs(deltaX);
+      const absDeltaY = Math.abs(deltaY);
+
+      if (absDeltaX > minSwipeDistance && absDeltaX > absDeltaY) {
+        if (deltaX > 0) {
+          console.log('Swipe right detected, going to previous image');
+          prevImage();
+        } else {
+          console.log('Swipe left detected, going to next image');
+          nextImage();
+        }
+      } else if (absDeltaY > minSwipeDistance && absDeltaY > absDeltaX) {
+        console.log('Vertical swipe detected, closing modal');
+        closeModal();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('imageModal');
+      if (!modal || !modal.classList.contains('active')) return;
+      console.log('Key pressed:', e.key);
+      if (e.key === 'Escape') {
+        console.log('Escape key pressed, closing modal');
+        closeModal();
+      }
+      if (e.key === 'ArrowRight') {
+        nextImage();
+      }
+      if (e.key === 'ArrowLeft') {
+        prevImage();
+      }
+    });
+  </script>
+</body>
+</html>
