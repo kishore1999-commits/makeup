@@ -167,19 +167,52 @@
       line-height: 2;
       font-weight: 300;
     }
-    .contact a {
-      color: var(--blush);
-      text-decoration: none;
-      transition: all .3s;
+    .reach-title {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: var(--champagne);
+      letter-spacing: 1.2px;
+      font-family: 'Playfair Display', serif;
+      text-shadow: 0 0 10px rgba(247,231,206,0.6);
+      position: relative;
     }
-    .contact a:hover { color: var(--rose-gold); }
-    .contact .reach-title {
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--champagne);
-  letter-spacing: 0.8px;
-  text-shadow: 0 0 10px rgba(247,231,206,0.6);
+    .reach-title::before {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--rose-gold), transparent);
+      transform: translateX(-50%);
+      opacity: 0.7;
+    }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .contact-links p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+    .contact-icon {
+      width: 20px;
+      margin-right: 8px;
+      font-size: 14px;
+    }
+    .contact a {
+      color: var(--rose-gold);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .contact a:hover {
+      color: var(--champagne);
+      text-shadow: 0 0 8px rgba(247,231,206,0.5);
     }
     .main {
       margin-left: var(--sidebar-width);
@@ -577,6 +610,25 @@
       }
       .profile-pic { width: 80px; height: 100px; }
       .artist-name { font-size: 2vw; margin-top: 0; }
+      .contact {
+        margin-top: 20px;
+        font-size: 12px;
+      }
+      .reach-title {
+        font-size: 15px;
+        margin-bottom: 12px;
+      }
+      .reach-title::before {
+        width: 50px;
+      }
+      .contact-links {
+        gap: 10px;
+      }
+      .contact-icon {
+        width: 18px;
+        margin-right: 6px;
+        font-size: 13px;
+      }
       .main { margin-left: 0; width: 100%; }
       .section { padding: 3vw; }
       .section h2 { font-size: 3.5vw; }
@@ -602,8 +654,27 @@
       .sidebar.active {
         transform: translateX(0);
       }
+      .contact {
+        margin-top: 16px;
+        font-size: 11px;
+      }
+      .reach-title {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+      .reach-title::before {
+        width: 40px;
+      }
+      .contact-links {
+        gap: 8px;
+      }
+      .contact-icon {
+        width: 16px;
+        margin-right: 5px;
+        font-size: 12px;
+      }
       .main { margin-left: 0; width: 100%; }
-      .banner { height: 20vh; min-height: 120px; max-height: 250px; } /* Reduced for mobile */
+      .banner { height: 20vh; min-height: 120px; max-height: 250px; }
       .section { padding: 3vw; }
       .section h2 { font-size: 4.5vw; }
       .section h2::before { width: 8vw; }
@@ -632,7 +703,9 @@
 <body>
   <div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></div>
   <div class="sidebar">
-    <div class="profile-pic"><img src="https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/WhatsApp%20Image%202025-09-21%20at%204.32.37%20PM.jpeg" alt="Your Name"></div>
+    <div class="profile-pic">
+      <img src="https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/WhatsApp%20Image%202025-09-21%20at%204.32.37%20PM.jpeg" alt="Your Name">
+    </div>
     <div class="artist-name">Supriya.S</div>
     <div class="social-icons">
       <a href="mailto:Mua.supriya15@gmail.com" class="mail"><i class="fas fa-envelope"></i></a>
@@ -640,11 +713,11 @@
       <a href="https://www.youtube.com/@SupriyaMua15" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
     </div>
     <div class="contact">
-      <p>📍 Hyderabad</p>
-      <p class = "reach-title">For bookings, please contact us via</p>
+      <p class="reach-title">For bookings, please contact us via</p>
+      <div class="contact-links">
+        <p><span class="contact-icon">📧</span> <a href="mailto:Mua.supriya15@gmail.com">Mua.supriya15@gmail.com</a></p>
+        <p><span class="contact-icon">📱</span> <a href="tel:+91 7981672217">+91 7981672217</a></p>
       </div>
-      <p>📧 <a href="mailto:Mua.supriya15@gmail.com">Mua.supriya15@gmail.com</a></p>
-      <p>📱 <a href="tel:+91 7981672217">+91 7981672217</a></p>
     </div>
   </div>
   <div class="main">
@@ -850,7 +923,6 @@
         ]
       }
     };
-
     let currentGallery = '';
     let currentIdx = 0;
     let currentSubIdx = 0;
@@ -861,7 +933,6 @@
     let touchStartY = 0;
     let touchEndY = 0;
     const minSwipeDistance = 50;
-
     function openImage(idx, galleryType) {
       console.log('Opening modal for gallery:', galleryType, 'index:', idx);
       currentGallery = galleryType;
@@ -882,7 +953,6 @@
         console.error('Modal element not found');
       }
     }
-
     function nextImage() {
       console.log('Next image, currentSubIdx:', currentSubIdx, 'currentIdx:', currentIdx);
       if (currentSubIdx < images.length - 1) {
@@ -900,7 +970,6 @@
         console.error('Modal image element not found');
       }
     }
-
     function prevImage() {
       console.log('Previous image, currentSubIdx:', currentSubIdx, 'currentIdx:', currentIdx);
       if (currentSubIdx > 0) {
@@ -918,7 +987,6 @@
         console.error('Modal image element not found');
       }
     }
-
     function closeModal() {
       console.log('Attempting to close modal');
       const modal = document.getElementById('imageModal');
@@ -930,73 +998,64 @@
         console.error('Modal element not found');
       }
     }
-
     function setupInfiniteScroll(containerId, galleryData, galleryType) {
       const container = document.getElementById(containerId);
       const gallery = container.parentElement;
-      
+     
       if (!container) {
         console.error(`Container ${containerId} not found`);
         return;
       }
-
       const totalItems = Object.keys(galleryData).length;
       const thumbWidth = 200 + 16;
       let position = 0;
       let isPaused = false;
       let lastTime = performance.now();
       const speed = 50;
-
       for (let i = 0; i < totalItems * 3; i++) {
         const idx = i % totalItems;
         const thumbDiv = document.createElement('div');
         thumbDiv.className = 'thumb';
-        
+       
         thumbDiv.addEventListener('click', function() {
           openImage(idx, galleryType);
         });
-        
+       
         const img = document.createElement('img');
         img.src = galleryData[idx][0];
         img.alt = `${galleryType.charAt(0).toUpperCase() + galleryType.slice(1)} makeup example ${idx + 1}`;
-        
+       
         thumbDiv.appendChild(img);
         container.appendChild(thumbDiv);
       }
-
       function animate(currentTime) {
         if (!isPaused) {
           const deltaTime = (currentTime - lastTime) / 1000;
           position += speed * deltaTime;
-          
+         
           const resetPoint = thumbWidth * totalItems;
           if (position >= resetPoint) {
             position = position % resetPoint;
           }
-          
+         
           container.style.transform = `translateX(-${position}px)`;
           container.style.transition = 'none';
         }
-        
+       
         lastTime = currentTime;
         requestAnimationFrame(animate);
       }
-
       requestAnimationFrame(animate);
-
       gallery.addEventListener('mouseenter', () => {
         isPaused = true;
       });
-
       gallery.addEventListener('mouseleave', () => {
         isPaused = false;
         lastTime = performance.now();
       });
-
       let isDragging = false;
       let startX;
       let scrollStart;
-
       gallery.addEventListener('mousedown', (e) => {
         isDragging = true;
         startX = e.pageX;
@@ -1004,21 +1063,19 @@
         isPaused = true;
         gallery.style.cursor = 'grabbing';
       });
-
       gallery.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         e.preventDefault();
         const x = e.pageX;
         const walk = (startX - x);
         position = scrollStart + walk;
-        
+       
         const resetPoint = thumbWidth * totalItems;
         if (position < 0) position += resetPoint;
         if (position >= resetPoint * 2) position -= resetPoint;
-        
+       
         container.style.transform = `translateX(-${position}px)`;
       });
-
       gallery.addEventListener('mouseup', () => {
         isDragging = false;
         gallery.style.cursor = 'grab';
@@ -1027,7 +1084,6 @@
           lastTime = performance.now();
         }, 300);
       });
-
       gallery.addEventListener('mouseleave', () => {
         if (isDragging) {
           isDragging = false;
@@ -1038,38 +1094,32 @@
           }, 300);
         }
       });
-
       let touchStartX;
       let touchScrollStart;
-
       gallery.addEventListener('touchstart', (e) => {
         touchStartX = e.touches[0].pageX;
         touchScrollStart = position;
         isPaused = true;
       });
-
       gallery.addEventListener('touchmove', (e) => {
         const x = e.touches[0].pageX;
         const walk = (touchStartX - x);
         position = touchScrollStart + walk;
-        
+       
         const resetPoint = thumbWidth * totalItems;
         if (position < 0) position += resetPoint;
         if (position >= resetPoint * 2) position -= resetPoint;
-        
+       
         container.style.transform = `translateX(-${position}px)`;
       });
-
       gallery.addEventListener('touchend', () => {
         setTimeout(() => {
           isPaused = false;
           lastTime = performance.now();
         }, 300);
       });
-
       gallery.style.cursor = 'grab';
     }
-
     document.addEventListener('DOMContentLoaded', () => {
       const closeButton = document.querySelector('.close-modal');
       if (closeButton) {
@@ -1082,7 +1132,6 @@
       } else {
         console.error('Close button not found');
       }
-
       const modal = document.getElementById('imageModal');
       if (modal) {
         modal.addEventListener('click', (e) => {
@@ -1094,7 +1143,6 @@
       } else {
         console.error('Modal element not found during initialization');
       }
-
       const modalImage = document.getElementById('modalImage');
       if (modalImage) {
         modalImage.addEventListener('touchstart', (e) => {
@@ -1102,7 +1150,6 @@
           touchStartY = e.changedTouches[0].screenY;
           console.log('Touch start at X:', touchStartX, 'Y:', touchStartY);
         });
-
         modalImage.addEventListener('touchend', (e) => {
           touchEndX = e.changedTouches[0].screenX;
           touchEndY = e.changedTouches[0].screenY;
@@ -1112,13 +1159,11 @@
       } else {
         console.error('Modal image element not found for swipe gestures');
       }
-
       const form = document.querySelector('.connect-form');
       if (form) {
-        form.addEventListener('submit', (event) => {
-          event.preventDefault();
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
           const formData = new FormData(form);
-
           fetch('/', {
             method: 'POST',
             body: formData
@@ -1128,7 +1173,7 @@
                 const toast = document.getElementById('toastMessage');
                 if (toast) {
                   toast.classList.add('show');
-                  setTimeout(() => toast.classList.remove('show'), 3000); // Hide after 3 seconds
+                  setTimeout(() => toast.classList.remove('show'), 3000);
                 }
                 form.reset();
               } else {
@@ -1140,18 +1185,15 @@
             });
         });
       }
-
       setupInfiniteScroll('gallery-bridal', galleries.bridal, 'bridal');
       setupInfiniteScroll('gallery-party', galleries.party, 'party');
       setupInfiniteScroll('gallery-misc', galleries.misc, 'misc');
     });
-
     function handleSwipe() {
       const deltaX = touchEndX - touchStartX;
       const deltaY = touchEndY - touchStartY;
       const absDeltaX = Math.abs(deltaX);
       const absDeltaY = Math.abs(deltaY);
-
       if (absDeltaX > minSwipeDistance && absDeltaX > absDeltaY) {
         if (deltaX > 0) {
           console.log('Swipe right detected, going to previous image');
@@ -1165,7 +1207,6 @@
         closeModal();
       }
     }
-
     document.addEventListener('keydown', (e) => {
       const modal = document.getElementById('imageModal');
       if (!modal || !modal.classList.contains('active')) return;
@@ -1181,7 +1222,6 @@
         prevImage();
       }
     });
-
     function toggleSidebar() {
       const sidebar = document.querySelector('.sidebar');
       const isHidden = sidebar.classList.contains('hidden');
