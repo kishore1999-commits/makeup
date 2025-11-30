@@ -701,16 +701,20 @@
   </style>
 </head>
 <body>
-  <div class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></div>
-  <div class="sidebar">
+  <!-- menu toggle updated: no inline onclick, added aria attributes -->
+  <button id="menuToggle" class="menu-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Open menu">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <aside id="sidebar" class="sidebar" role="navigation" aria-label="Main sidebar">
     <div class="profile-pic">
       <img src="https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/IMG_6311.jpg" alt="Your Name">
     </div>
     <div class="artist-name">Supriya.S</div>
     <div class="social-icons">
-      <a href="mailto:Mua.supriya15@gmail.com" class="mail"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.instagram.com/mua_supriya15/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@SupriyaMua15" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+      <a href="mailto:Mua.supriya15@gmail.com" class="mail" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.instagram.com/mua_supriya15/" target="_blank" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@SupriyaMua15" target="_blank" class="youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
     </div>
     <div class="contact">
       <p class="reach-title">For bookings, please contact us via</p>
@@ -719,7 +723,8 @@
         <p><span class="contact-icon">📱</span> <a href="tel:+91 7981672217">+91 7981672217</a></p>
       </div>
     </div>
-  </div>
+  </aside>
+
   <div class="main">
     <div class="banner">
       <video autoplay muted loop playsinline>
@@ -780,20 +785,24 @@
       </form>
     </div>
   </div>
+
   <!-- Modal -->
   <div class="modal" id="imageModal">
-    <button class="close-modal" onclick="closeModal()">&times;</button>
+    <button class="close-modal" aria-label="Close image">&times;</button>
     <div class="modal-content">
       <div class="modal-controls">
-        <button class="modal-control" onclick="prevImage()">‹</button>
-        <button class="modal-control" onclick="nextImage()">›</button>
+        <button class="modal-control" onclick="prevImage()" aria-label="Previous image">‹</button>
+        <button class="modal-control" onclick="nextImage()" aria-label="Next image">›</button>
       </div>
       <img src="" alt="" class="modal-image" id="modalImage">
     </div>
   </div>
+
   <!-- Toast Notification -->
   <div class="toast" id="toastMessage">Thanks for contacting! I'll get back to you soon.</div>
+
   <script>
+    /* ----------------- GALLERY DATA ----------------- */
     let galleries = {
       bridal: {
         0: [
@@ -923,6 +932,8 @@
         ]
       }
     };
+
+    /* ----------------- MODAL / GALLERY STATE ----------------- */
     let currentGallery = '';
     let currentIdx = 0;
     let currentSubIdx = 0;
@@ -933,119 +944,94 @@
     let touchStartY = 0;
     let touchEndY = 0;
     const minSwipeDistance = 50;
+
     function openImage(idx, galleryType) {
-      console.log('Opening modal for gallery:', galleryType, 'index:', idx);
       currentGallery = galleryType;
       currentIdx = idx;
       currentSubIdx = 0;
       images = galleries[galleryType][idx];
       const modalImage = document.getElementById('modalImage');
-      if (modalImage) {
-        modalImage.src = images[currentSubIdx];
-      } else {
-        console.error('Modal image element not found');
-      }
+      if (modalImage) modalImage.src = images[currentSubIdx];
       const modal = document.getElementById('imageModal');
       if (modal) {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
-      } else {
-        console.error('Modal element not found');
       }
     }
     function nextImage() {
-      console.log('Next image, currentSubIdx:', currentSubIdx, 'currentIdx:', currentIdx);
+      if (!images || images.length === 0) return;
       if (currentSubIdx < images.length - 1) {
         currentSubIdx++;
       } else {
         currentIdx = (currentIdx + 1) % (maxIdx + 1);
-        currentSubIdx = 0;
         images = galleries[currentGallery][currentIdx];
-        console.log('Moving to next index:', currentIdx);
+        currentSubIdx = 0;
       }
       const modalImage = document.getElementById('modalImage');
-      if (modalImage) {
-        modalImage.src = images[currentSubIdx];
-      } else {
-        console.error('Modal image element not found');
-      }
+      if (modalImage) modalImage.src = images[currentSubIdx];
     }
     function prevImage() {
-      console.log('Previous image, currentSubIdx:', currentSubIdx, 'currentIdx:', currentIdx);
+      if (!images || images.length === 0) return;
       if (currentSubIdx > 0) {
         currentSubIdx--;
       } else {
         currentIdx = (currentIdx - 1 + maxIdx + 1) % (maxIdx + 1);
         images = galleries[currentGallery][currentIdx];
         currentSubIdx = images.length - 1;
-        console.log('Moving to previous index:', currentIdx);
       }
       const modalImage = document.getElementById('modalImage');
-      if (modalImage) {
-        modalImage.src = images[currentSubIdx];
-      } else {
-        console.error('Modal image element not found');
-      }
+      if (modalImage) modalImage.src = images[currentSubIdx];
     }
     function closeModal() {
-      console.log('Attempting to close modal');
       const modal = document.getElementById('imageModal');
       if (modal) {
         modal.classList.remove('active');
         document.body.style.overflow = '';
-        console.log('Modal closed successfully');
-      } else {
-        console.error('Modal element not found');
       }
     }
+
+    /* ----------------- INFINITE SCROLL SETUP ----------------- */
     function setupInfiniteScroll(containerId, galleryData, galleryType) {
       const container = document.getElementById(containerId);
       const gallery = container.parentElement;
-     
-      if (!container) {
-        console.error(`Container ${containerId} not found`);
-        return;
-      }
+      if (!container) return;
       const totalItems = Object.keys(galleryData).length;
-      const thumbWidth = 200 + 16;
+      const thumbWidth = 200 + 16; // matches CSS thumb + gap
       let position = 0;
       let isPaused = false;
       let lastTime = performance.now();
       const speed = 50;
+
       for (let i = 0; i < totalItems * 3; i++) {
         const idx = i % totalItems;
         const thumbDiv = document.createElement('div');
         thumbDiv.className = 'thumb';
-       
         thumbDiv.addEventListener('click', function() {
           openImage(idx, galleryType);
         });
-       
         const img = document.createElement('img');
         img.src = galleryData[idx][0];
         img.alt = `${galleryType.charAt(0).toUpperCase() + galleryType.slice(1)} makeup example ${idx + 1}`;
-       
         thumbDiv.appendChild(img);
         container.appendChild(thumbDiv);
       }
+
       function animate(currentTime) {
         if (!isPaused) {
           const deltaTime = (currentTime - lastTime) / 1000;
           position += speed * deltaTime;
-         
           const resetPoint = thumbWidth * totalItems;
           if (position >= resetPoint) {
             position = position % resetPoint;
           }
-         
           container.style.transform = `translateX(-${position}px)`;
           container.style.transition = 'none';
         }
-       
         lastTime = currentTime;
         requestAnimationFrame(animate);
       }
       requestAnimationFrame(animate);
+
       gallery.addEventListener('mouseenter', () => {
         isPaused = true;
       });
@@ -1053,6 +1039,8 @@
         isPaused = false;
         lastTime = performance.now();
       });
+
+      // dragging support
       let isDragging = false;
       let startX;
       let scrollStart;
@@ -1069,11 +1057,9 @@
         const x = e.pageX;
         const walk = (startX - x);
         position = scrollStart + walk;
-       
         const resetPoint = thumbWidth * totalItems;
         if (position < 0) position += resetPoint;
         if (position >= resetPoint * 2) position -= resetPoint;
-       
         container.style.transform = `translateX(-${position}px)`;
       });
       gallery.addEventListener('mouseup', () => {
@@ -1094,6 +1080,8 @@
           }, 300);
         }
       });
+
+      // touch support
       let touchStartX;
       let touchScrollStart;
       gallery.addEventListener('touchstart', (e) => {
@@ -1105,11 +1093,9 @@
         const x = e.touches[0].pageX;
         const walk = (touchStartX - x);
         position = touchScrollStart + walk;
-       
         const resetPoint = thumbWidth * totalItems;
         if (position < 0) position += resetPoint;
         if (position >= resetPoint * 2) position -= resetPoint;
-       
         container.style.transform = `translateX(-${position}px)`;
       });
       gallery.addEventListener('touchend', () => {
@@ -1118,47 +1104,38 @@
           lastTime = performance.now();
         }, 300);
       });
+
       gallery.style.cursor = 'grab';
     }
+
+    /* ----------------- DOM INIT ----------------- */
     document.addEventListener('DOMContentLoaded', () => {
       const closeButton = document.querySelector('.close-modal');
       if (closeButton) {
         closeButton.addEventListener('click', (e) => {
           e.stopPropagation();
-          console.log('Close button clicked');
           closeModal();
         });
-        console.log('Close button listener added');
-      } else {
-        console.error('Close button not found');
       }
       const modal = document.getElementById('imageModal');
       if (modal) {
         modal.addEventListener('click', (e) => {
-          if (e.target === modal) {
-            console.log('Modal background clicked, closing modal');
-            closeModal();
-          }
+          if (e.target === modal) closeModal();
         });
-      } else {
-        console.error('Modal element not found during initialization');
       }
       const modalImage = document.getElementById('modalImage');
       if (modalImage) {
         modalImage.addEventListener('touchstart', (e) => {
           touchStartX = e.changedTouches[0].screenX;
           touchStartY = e.changedTouches[0].screenY;
-          console.log('Touch start at X:', touchStartX, 'Y:', touchStartY);
         });
         modalImage.addEventListener('touchend', (e) => {
           touchEndX = e.changedTouches[0].screenX;
           touchEndY = e.changedTouches[0].screenY;
-          console.log('Touch end at X:', touchEndX, 'Y:', touchEndY);
           handleSwipe();
         });
-      } else {
-        console.error('Modal image element not found for swipe gestures');
       }
+
       const form = document.querySelector('.connect-form');
       if (form) {
         form.addEventListener('submit', (e) => {
@@ -1185,10 +1162,13 @@
             });
         });
       }
+
       setupInfiniteScroll('gallery-bridal', galleries.bridal, 'bridal');
       setupInfiniteScroll('gallery-party', galleries.party, 'party');
       setupInfiniteScroll('gallery-misc', galleries.misc, 'misc');
     });
+
+    /* ----------------- SWIPE HANDLING ----------------- */
     function handleSwipe() {
       const deltaX = touchEndX - touchStartX;
       const deltaY = touchEndY - touchStartY;
@@ -1196,38 +1176,88 @@
       const absDeltaY = Math.abs(deltaY);
       if (absDeltaX > minSwipeDistance && absDeltaX > absDeltaY) {
         if (deltaX > 0) {
-          console.log('Swipe right detected, going to previous image');
           prevImage();
         } else {
-          console.log('Swipe left detected, going to next image');
           nextImage();
         }
       } else if (absDeltaY > minSwipeDistance && absDeltaY > absDeltaX) {
-        console.log('Vertical swipe detected, closing modal');
         closeModal();
       }
     }
+
     document.addEventListener('keydown', (e) => {
       const modal = document.getElementById('imageModal');
       if (!modal || !modal.classList.contains('active')) return;
-      console.log('Key pressed:', e.key);
-      if (e.key === 'Escape') {
-        console.log('Escape key pressed, closing modal');
-        closeModal();
-      }
-      if (e.key === 'ArrowRight') {
-        nextImage();
-      }
-      if (e.key === 'ArrowLeft') {
-        prevImage();
-      }
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
     });
-    function toggleSidebar() {
-      const sidebar = document.querySelector('.sidebar');
-      const isHidden = sidebar.classList.contains('hidden');
-      sidebar.classList.toggle('active', !isHidden);
-      sidebar.classList.toggle('hidden', isHidden);
-    }
+
+    /* ----------------- SIDEBAR TOGGLE (IMPROVED) ----------------- */
+    (function setupSidebarToggle() {
+      const sidebar = document.getElementById('sidebar');
+      const menuToggle = document.getElementById('menuToggle');
+
+      if (!sidebar || !menuToggle) return;
+
+      function openSidebar() {
+        sidebar.classList.add('active');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        // lock body scroll on mobile when sidebar open
+        document.body.style.overflow = 'hidden';
+      }
+      function closeSidebar() {
+        sidebar.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      function toggleSidebar() {
+        if (sidebar.classList.contains('active')) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
+      }
+
+      menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleSidebar();
+      });
+
+      // close if clicking outside sidebar (useful on mobile)
+      document.addEventListener('click', (e) => {
+        if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+          closeSidebar();
+        }
+      });
+
+      // close on escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+          closeSidebar();
+        }
+      });
+
+      // close when any link inside sidebar is clicked
+      const links = sidebar.querySelectorAll('a');
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          if (sidebar.classList.contains('active')) closeSidebar();
+        });
+      });
+
+      // ensure cleanup on resize (desktop)
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 600) {
+          document.body.style.overflow = '';
+          sidebar.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // initial aria state
+      menuToggle.setAttribute('aria-expanded', 'false');
+    })();
   </script>
 </body>
 </html>
