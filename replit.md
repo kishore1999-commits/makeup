@@ -39,3 +39,6 @@ PostgreSQL database with `enquiries` table:
 - Export enquiries to CSV (Excel-compatible)
 - Social media links (Instagram, YouTube, Email)
 - Testimonials section
+
+## Future Enhancements
+- Email notifications: User wants to receive email notifications at Mua.supriya15@gmail.com when new enquiries are submitted. Setup Gmail or Resend integration when ready.

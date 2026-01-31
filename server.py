@@ -4,85 +4,8 @@ import psycopg2
 from datetime import datetime
 import csv
 import io
-import requests
-import resend
 
 app = Flask(__name__, static_folder='.')
-
-NOTIFICATION_EMAIL = "Mua.supriya15@gmail.com"
-
-def get_resend_credentials():
-    hostname = os.environ.get('REPLIT_CONNECTORS_HOSTNAME')
-    repl_identity = os.environ.get('REPL_IDENTITY')
-    web_repl_renewal = os.environ.get('WEB_REPL_RENEWAL')
-    
-    if repl_identity:
-        x_replit_token = 'repl ' + repl_identity
-    elif web_repl_renewal:
-        x_replit_token = 'depl ' + web_repl_renewal
-    else:
-        return None, None
-    
-    try:
-        response = requests.get(
-            f'https://{hostname}/api/v2/connection?include_secrets=true&connector_names=resend',
-            headers={
-                'Accept': 'application/json',
-                'X_REPLIT_TOKEN': x_replit_token
-            }
-        )
-        data = response.json()
-        connection = data.get('items', [{}])[0] if data.get('items') else {}
-        settings = connection.get('settings', {})
-        return settings.get('api_key'), settings.get('from_email')
-    except Exception as e:
-        print(f"Error getting Resend credentials: {e}")
-        return None, None
-
-def send_notification_email(name, email, phone, message):
-    try:
-        api_key, from_email = get_resend_credentials()
-        if not api_key or not from_email:
-            print("Resend not configured, skipping email notification")
-            return False
-        
-        resend.api_key = api_key
-        
-        html_content = f"""
-        <h2>New Enquiry from Telugu Bridal Artistry Website</h2>
-        <table style="border-collapse: collapse; width: 100%; max-width: 500px;">
-            <tr style="background-color: #f7e7ce;">
-                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Name</strong></td>
-                <td style="padding: 10px; border: 1px solid #ddd;">{name}</td>
-            </tr>
-            <tr>
-                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Email</strong></td>
-                <td style="padding: 10px; border: 1px solid #ddd;"><a href="mailto:{email}">{email}</a></td>
-            </tr>
-            <tr style="background-color: #f7e7ce;">
-                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Mobile</strong></td>
-                <td style="padding: 10px; border: 1px solid #ddd;"><a href="tel:{phone}">{phone}</a></td>
-            </tr>
-            <tr>
-                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Message</strong></td>
-                <td style="padding: 10px; border: 1px solid #ddd;">{message}</td>
-            </tr>
-        </table>
-        <p style="color: #666; margin-top: 20px;">This enquiry was submitted through your website.</p>
-        """
-        
-        resend.Emails.send({
-            "from": from_email,
-            "to": [NOTIFICATION_EMAIL],
-            "subject": f"New Enquiry from {name}",
-            "html": html_content
-        })
-        
-        print(f"Email notification sent to {NOTIFICATION_EMAIL}")
-        return True
-    except Exception as e:
-        print(f"Error sending email: {e}")
-        return False
 
 def get_db_connection():
     return psycopg2.connect(os.environ['DATABASE_URL'])
@@ -146,8 +69,6 @@ def submit_enquiry():
         conn.commit()
         cur.close()
         conn.close()
-        
-        send_notification_email(name, email, phone, message)
         
         return jsonify({'success': True, 'message': 'Enquiry submitted successfully'})
     except Exception as e:
