@@ -18,9 +18,19 @@ def init_db():
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
             email VARCHAR(255) NOT NULL,
+            phone VARCHAR(50),
             message TEXT NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
+    ''')
+    cur.execute('''
+        DO $$ 
+        BEGIN 
+            IF NOT EXISTS (SELECT 1 FROM information_schema.columns 
+                          WHERE table_name='enquiries' AND column_name='phone') THEN
+                ALTER TABLE enquiries ADD COLUMN phone VARCHAR(50);
+            END IF;
+        END $$;
     ''')
     conn.commit()
     cur.close()
@@ -44,6 +54,7 @@ def submit_enquiry():
         data = request.get_json()
         name = data.get('name', '').strip()
         email = data.get('email', '').strip()
+        phone = data.get('phone', '').strip()
         message = data.get('message', '').strip()
         
         if not name or not email or not message:
@@ -52,8 +63,8 @@ def submit_enquiry():
         conn = get_db_connection()
         cur = conn.cursor()
         cur.execute(
-            'INSERT INTO enquiries (name, email, message) VALUES (%s, %s, %s)',
-            (name, email, message)
+            'INSERT INTO enquiries (name, email, phone, message) VALUES (%s, %s, %s, %s)',
+            (name, email, phone, message)
         )
         conn.commit()
         cur.close()
@@ -68,7 +79,7 @@ def get_enquiries():
     try:
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute('SELECT id, name, email, message, created_at FROM enquiries ORDER BY created_at DESC')
+        cur.execute('SELECT id, name, email, phone, message, created_at FROM enquiries ORDER BY created_at DESC')
         rows = cur.fetchall()
         cur.close()
         conn.close()
@@ -79,8 +90,9 @@ def get_enquiries():
                 'id': row[0],
                 'name': row[1],
                 'email': row[2],
-                'message': row[3],
-                'created_at': row[4].isoformat() if row[4] else None
+                'phone': row[3],
+                'message': row[4],
+                'created_at': row[5].isoformat() if row[5] else None
             })
         
         return jsonify(enquiries)
@@ -92,21 +104,22 @@ def export_enquiries():
     try:
         conn = get_db_connection()
         cur = conn.cursor()
-        cur.execute('SELECT id, name, email, message, created_at FROM enquiries ORDER BY created_at DESC')
+        cur.execute('SELECT id, name, email, phone, message, created_at FROM enquiries ORDER BY created_at DESC')
         rows = cur.fetchall()
         cur.close()
         conn.close()
         
         output = io.StringIO()
         writer = csv.writer(output)
-        writer.writerow(['ID', 'Name', 'Email', 'Message', 'Submitted At'])
+        writer.writerow(['ID', 'Name', 'Email', 'Mobile Number', 'Message', 'Submitted At'])
         for row in rows:
             writer.writerow([
                 row[0],
                 row[1],
                 row[2],
-                row[3],
-                row[4].strftime('%Y-%m-%d %H:%M:%S') if row[4] else ''
+                row[3] or '',
+                row[4],
+                row[5].strftime('%Y-%m-%d %H:%M:%S') if row[5] else ''
             ])
         
         output.seek(0)

@@ -780,6 +780,7 @@
         <input type="hidden" name="form-name" value="contact" />
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="contact" placeholder="Your Email" required>
+        <input type="tel" name="phone" placeholder="Your Mobile Number" required>
         <textarea name="message" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
       </form>
@@ -1143,6 +1144,7 @@
           const formData = {
             name: form.querySelector('input[name="name"]').value,
             email: form.querySelector('input[name="contact"]').value,
+            phone: form.querySelector('input[name="phone"]').value,
             message: form.querySelector('textarea[name="message"]').value
           };
           fetch('/api/enquiry', {
