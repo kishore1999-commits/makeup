@@ -1140,13 +1140,21 @@
       if (form) {
         form.addEventListener('submit', (e) => {
           e.preventDefault();
-          const formData = new FormData(form);
-          fetch('/', {
+          const formData = {
+            name: form.querySelector('input[name="name"]').value,
+            email: form.querySelector('input[name="contact"]').value,
+            message: form.querySelector('textarea[name="message"]').value
+          };
+          fetch('/api/enquiry', {
             method: 'POST',
-            body: formData
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
           })
-            .then(response => {
-              if (response.ok) {
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
                 const toast = document.getElementById('toastMessage');
                 if (toast) {
                   toast.classList.add('show');
