@@ -1,10 +1,13 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Telugu Bridal Artistry</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -17,11 +20,13 @@
       --burgundy: #6b1b3d;
       --blush: #ffc9d9;
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: #1a0a0f;
@@ -31,6 +36,7 @@
       overflow-x: hidden;
       position: relative;
     }
+
     body::before {
       content: '';
       position: fixed;
@@ -38,19 +44,30 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 20% 50%, rgba(183,110,121,.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139,67,87,.15) 0%, transparent 50%);
+      background: radial-gradient(circle at 20% 50%, rgba(183, 110, 121, .15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139, 67, 87, .15) 0%, transparent 50%);
       animation: bgShift 15s ease infinite;
       z-index: 0;
     }
+
     @keyframes bgShift {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: .8; transform: scale(1.1); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: .8;
+        transform: scale(1.1);
+      }
     }
+
     .sidebar {
       width: var(--sidebar-width);
       background: linear-gradient(180deg, #2d0a1a 0%, #4a1b2e 40%, #6b1b3d 100%);
       padding: 30px 24px;
-      box-shadow: 4px 0 40px rgba(183,110,121,.3);
+      box-shadow: 4px 0 40px rgba(183, 110, 121, .3);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -60,12 +77,14 @@
       left: 0;
       overflow-y: auto;
       z-index: 100;
-      border-right: 2px solid rgba(183,110,121,.3);
+      border-right: 2px solid rgba(183, 110, 121, .3);
       transition: transform 0.3s ease;
     }
+
     .sidebar.hidden {
       transform: translateX(-100%);
     }
+
     .menu-toggle {
       display: none;
       position: fixed;
@@ -73,8 +92,8 @@
       left: 20px;
       font-size: 24px;
       color: var(--champagne);
-      background: rgba(183,110,121,.4);
-      border: 2px solid rgba(247,231,206,.5);
+      background: rgba(183, 110, 121, .4);
+      border: 2px solid rgba(247, 231, 206, .5);
       border-radius: 50%;
       width: 50px;
       height: 50px;
@@ -84,28 +103,33 @@
       justify-content: center;
       transition: all 0.3s;
     }
+
     .menu-toggle:hover {
-      background: rgba(183,110,121,.7);
+      background: rgba(183, 110, 121, .7);
       transform: scale(1.1);
     }
+
     .profile-pic {
       width: 140px;
       height: 180px;
       border-radius: 50% 50% 50% 50%/60% 60% 40% 40%;
       overflow: hidden;
-      box-shadow: 0 0 0 4px rgba(183,110,121,.4), 0 0 0 8px rgba(247,231,206,.2), 0 12px 40px rgba(183,110,121,.6);
+      box-shadow: 0 0 0 4px rgba(183, 110, 121, .4), 0 0 0 8px rgba(247, 231, 206, .2), 0 12px 40px rgba(183, 110, 121, .6);
       cursor: pointer;
       transition: all .5s;
     }
+
     .profile-pic:hover {
       transform: scale(1.08) translateY(-8px);
-      box-shadow: 0 0 0 4px rgba(183,110,121,.6), 0 0 0 8px rgba(247,231,206,.3), 0 18px 60px rgba(183,110,121,.8);
+      box-shadow: 0 0 0 4px rgba(183, 110, 121, .6), 0 0 0 8px rgba(247, 231, 206, .3), 0 18px 60px rgba(183, 110, 121, .8);
     }
+
     .profile-pic img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+
     .artist-name {
       font-size: 24px;
       font-weight: 700;
@@ -113,20 +137,23 @@
       text-align: center;
       color: var(--champagne);
       font-family: 'Playfair Display', serif;
-      text-shadow: 3px 3px 10px rgba(0,0,0,.6);
+      text-shadow: 3px 3px 10px rgba(0, 0, 0, .6);
       letter-spacing: 2px;
     }
+
     .artist-name::after {
       content: '💄✨';
       display: block;
       font-size: 16px;
       margin-top: 8px;
     }
+
     .social-icons {
       margin-top: 24px;
       display: flex;
       gap: 16px;
     }
+
     .social-icons a {
       width: 56px;
       height: 56px;
@@ -136,82 +163,122 @@
       justify-content: center;
       font-size: 24px;
       transition: all .4s;
-      background: rgba(247,231,206,.08);
+      background: rgba(247, 231, 206, .08);
       backdrop-filter: blur(20px);
-      border: 2px solid rgba(183,110,121,.3);
+      border: 2px solid rgba(183, 110, 121, .3);
     }
+
     .social-icons a:hover {
       transform: translateY(-8px) scale(1.15) rotate(8deg);
-      box-shadow: 0 12px 30px rgba(0,0,0,.5);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .5);
     }
-    .social-icons .youtube { color: var(--champagne); }
+
+    .social-icons .youtube {
+      color: var(--champagne);
+    }
+
     .social-icons .youtube:hover {
       background: linear-gradient(135deg, #FF0000, #CC0000);
       border-color: #FF0000;
     }
-    .social-icons .instagram { color: var(--champagne); }
+
+    .social-icons .instagram {
+      color: var(--champagne);
+    }
+
     .social-icons .instagram:hover {
       background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
       border-color: #e1306c;
     }
-    .social-icons .mail { color: var(--champagne); }
+
+    .social-icons .mail {
+      color: var(--champagne);
+    }
+
     .social-icons .mail:hover {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       border-color: #667eea;
     }
-    .social-icons .whatsapp { color: var(--champagne); }
+
+    .social-icons .whatsapp {
+      color: var(--champagne);
+    }
+
     .social-icons .whatsapp:hover {
       background: linear-gradient(135deg, #25D366, #128C7E);
       border-color: #25D366;
     }
+
     .footer {
-      background: linear-gradient(135deg, rgba(45,10,26,.95) 0%, rgba(74,27,46,.9) 100%);
+      background: linear-gradient(135deg, rgba(45, 10, 26, .95) 0%, rgba(74, 27, 46, .9) 100%);
       padding: 3vw 4vw;
       text-align: center;
-      border-top: 2px solid rgba(183,110,121,.3);
+      border-top: 2px solid rgba(183, 110, 121, .3);
     }
+
     .footer h3 {
       color: var(--champagne);
       font-family: 'Playfair Display', serif;
       font-size: 1.8vw;
       margin-bottom: 1.5vw;
     }
+
     .footer .social-icons {
       justify-content: center;
       margin-bottom: 1.5vw;
     }
+
     .footer-contact {
-      color: rgba(247,231,206,.8);
+      color: rgba(247, 231, 206, .8);
       font-size: 1.2vw;
       margin-bottom: 1vw;
     }
+
     .footer-contact a {
       color: var(--rose-gold);
       text-decoration: none;
       margin: 0 1vw;
     }
+
     .footer-contact a:hover {
       color: var(--champagne);
     }
+
     .footer-copyright {
-      color: rgba(247,231,206,.5);
+      color: rgba(247, 231, 206, .5);
       font-size: 1vw;
       margin-top: 1.5vw;
     }
+
     @media (max-width: 600px) {
-      .footer h3 { font-size: 4vw; }
-      .footer .social-icons a { width: 12vw; height: 12vw; font-size: 5vw; }
-      .footer-contact { font-size: 3vw; }
-      .footer-copyright { font-size: 2.5vw; }
+      .footer h3 {
+        font-size: 4vw;
+      }
+
+      .footer .social-icons a {
+        width: 12vw;
+        height: 12vw;
+        font-size: 5vw;
+      }
+
+      .footer-contact {
+        font-size: 3vw;
+      }
+
+      .footer-copyright {
+        font-size: 2.5vw;
+      }
     }
+
     .contact {
       margin-top: 24px;
       font-size: 13px;
-      color: rgba(247,231,206,.9);
+      color: rgba(247, 231, 206, .9);
       text-align: center;
       line-height: 2;
       font-weight: 300;
     }
+
     .reach-title {
       font-size: 16px;
       font-weight: 400;
@@ -219,9 +286,10 @@
       color: var(--champagne);
       letter-spacing: 1.2px;
       font-family: 'Playfair Display', serif;
-      text-shadow: 0 0 10px rgba(247,231,206,0.6);
+      text-shadow: 0 0 10px rgba(247, 231, 206, 0.6);
       position: relative;
     }
+
     .reach-title::before {
       content: '';
       position: absolute;
@@ -233,32 +301,38 @@
       transform: translateX(-50%);
       opacity: 0.7;
     }
+
     .contact-links {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
+
     .contact-links p {
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0;
     }
+
     .contact-icon {
       width: 20px;
       margin-right: 8px;
       font-size: 14px;
     }
+
     .contact a {
       color: var(--rose-gold);
       text-decoration: none;
       font-weight: 500;
       transition: all 0.3s ease;
     }
+
     .contact a:hover {
       color: var(--champagne);
-      text-shadow: 0 0 8px rgba(247,231,206,0.5);
+      text-shadow: 0 0 8px rgba(247, 231, 206, 0.5);
     }
+
     .main {
       margin-left: var(--sidebar-width);
       width: calc(100% - var(--sidebar-width));
@@ -267,14 +341,17 @@
       position: relative;
       z-index: 1;
     }
+
     .banner {
       position: relative;
       width: 100%;
-      height: 30vh; /* Matches web feel, reduced max for mobile */
+      height: 30vh;
+      /* Matches web feel, reduced max for mobile */
       min-height: 200px;
       max-height: 400px;
       overflow: hidden;
     }
+
     .banner video {
       position: absolute;
       top: 50%;
@@ -286,20 +363,26 @@
       filter: brightness(.65);
       transform: translate(-50%, -50%);
     }
+
     .section {
-      padding: 4vw; /* Reduced to match web spacing */
+      padding: 4vw;
+      /* Reduced to match web spacing */
       position: relative;
       overflow: hidden;
     }
+
     .section.bridal-section {
-      background: linear-gradient(135deg, rgba(107,27,61,.85) 0%, rgba(183,110,121,.75) 100%), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1200') center/cover no-repeat;
+      background: linear-gradient(135deg, rgba(107, 27, 61, .85) 0%, rgba(183, 110, 121, .75) 100%), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1200') center/cover no-repeat;
     }
+
     .section.party-section {
-      background: linear-gradient(135deg, rgba(139,67,87,.85) 0%, rgba(107,27,61,.75) 100%), url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200') center/cover no-repeat;
+      background: linear-gradient(135deg, rgba(139, 67, 87, .85) 0%, rgba(107, 27, 61, .75) 100%), url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200') center/cover no-repeat;
     }
+
     .section.misc-section {
-      background: linear-gradient(135deg, rgba(183,110,121,.85) 0%, rgba(139,67,87,.75) 100%), url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=1200') center/cover no-repeat;
+      background: linear-gradient(135deg, rgba(183, 110, 121, .85) 0%, rgba(139, 67, 87, .75) 100%), url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=1200') center/cover no-repeat;
     }
+
     .section h2 {
       color: var(--champagne);
       font-size: 3vw;
@@ -309,8 +392,9 @@
       display: inline-block;
       font-weight: 700;
       letter-spacing: 0.3vw;
-      text-shadow: 3px 3px 12px rgba(0,0,0,.5);
+      text-shadow: 3px 3px 12px rgba(0, 0, 0, .5);
     }
+
     .section h2::before {
       content: '';
       position: absolute;
@@ -321,8 +405,9 @@
       background: linear-gradient(to right, var(--rose-gold), var(--blush));
       border-radius: 0.3vw;
     }
+
     .section-subtitle {
-      color: rgba(247,231,206,.8);
+      color: rgba(247, 231, 206, .8);
       font-size: 1.2vw;
       font-weight: 300;
       margin-top: 1vw;
@@ -330,37 +415,44 @@
       letter-spacing: 0.15vw;
       line-height: 1.6;
     }
+
     .gallery {
       display: flex;
       gap: var(--gap);
       overflow: hidden;
-      background: linear-gradient(135deg, rgba(247,231,206,.08) 0%, rgba(183,110,121,.1) 100%);
+      background: linear-gradient(135deg, rgba(247, 231, 206, .08) 0%, rgba(183, 110, 121, .1) 100%);
       padding: 2vw;
       border-radius: 1.5vw;
-      box-shadow: 0 0.5vw 2vw rgba(0,0,0,.4);
-      border: 0.2vw solid rgba(183,110,121,.25);
+      box-shadow: 0 0.5vw 2vw rgba(0, 0, 0, .4);
+      border: 0.2vw solid rgba(183, 110, 121, .25);
       backdrop-filter: blur(0.8vw);
       position: relative;
       user-select: none;
     }
+
     .auto-scroll {
       display: flex;
       gap: var(--gap);
       will-change: transform;
     }
+
     .gallery::-webkit-scrollbar {
       height: 0.5vw;
     }
+
     .gallery::-webkit-scrollbar-track {
       background: transparent;
     }
+
     .gallery::-webkit-scrollbar-thumb {
       background-color: var(--rose-gold);
       border-radius: 0.3vw;
     }
+
     .gallery:hover .auto-scroll {
       animation-play-state: paused;
     }
+
     .thumb {
       flex: 0 0 auto;
       width: var(--thumb-width);
@@ -369,10 +461,11 @@
       overflow: hidden;
       cursor: pointer;
       margin-right: var(--gap);
-      box-shadow: 0 0.5vw 2vw rgba(0,0,0,.5);
+      box-shadow: 0 0.5vw 2vw rgba(0, 0, 0, .5);
       transition: all .5s;
       position: relative;
     }
+
     .thumb img {
       width: 100%;
       height: 100%;
@@ -380,14 +473,17 @@
       transition: transform .7s;
       filter: brightness(.85);
     }
+
     .thumb:hover {
-      box-shadow: 0 1vw 3vw rgba(183,110,121,.6);
+      box-shadow: 0 1vw 3vw rgba(183, 110, 121, .6);
       transform: translateY(-1vw) scale(1.05);
     }
+
     .thumb:hover img {
       transform: scale(1.2);
       filter: brightness(1.05);
     }
+
     .thumb:hover::after {
       content: '💄✨';
       position: absolute;
@@ -395,77 +491,88 @@
       right: 1vw;
       font-size: 2vw;
       opacity: 0.8;
-      text-shadow: 0 0 1vw rgba(183,110,121,.8);
+      text-shadow: 0 0 1vw rgba(183, 110, 121, .8);
       transition: opacity .3s;
     }
+
     .testimonials {
       padding: 3vw 4vw;
-      background: linear-gradient(135deg, rgba(45,10,26,.9) 0%, rgba(74,27,46,.8) 100%), url('https://images.unsplash.com/photo-1593529467220-9d721ceb9a78?w=1200') center/cover no-repeat;
+      background: linear-gradient(135deg, rgba(45, 10, 26, .9) 0%, rgba(74, 27, 46, .8) 100%), url('https://images.unsplash.com/photo-1593529467220-9d721ceb9a78?w=1200') center/cover no-repeat;
       margin: 2vw;
       border-radius: 1.5vw;
-      box-shadow: 0 1vw 3vw rgba(0,0,0,.5);
+      box-shadow: 0 1vw 3vw rgba(0, 0, 0, .5);
       text-align: center;
-      border: 0.2vw solid rgba(183,110,121,.3);
+      border: 0.2vw solid rgba(183, 110, 121, .3);
       backdrop-filter: blur(1vw);
     }
+
     .testimonials h2 {
       margin-bottom: 2vw;
       font-size: 3vw;
       color: var(--champagne);
     }
+
     .testimonial-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2vw;
       padding: 1vw 1vw;
     }
+
     .testimonial-card {
-      background: linear-gradient(135deg, rgba(247,231,206,.1) 0%, rgba(183,110,121,.08) 100%);
+      background: linear-gradient(135deg, rgba(247, 231, 206, .1) 0%, rgba(183, 110, 121, .08) 100%);
       padding: 2vw;
       border-radius: 1vw;
-      box-shadow: 0 0.5vw 2vw rgba(0,0,0,.4);
+      box-shadow: 0 0.5vw 2vw rgba(0, 0, 0, .4);
       transition: all .5s;
-      border: 0.2vw solid rgba(183,110,121,.2);
+      border: 0.2vw solid rgba(183, 110, 121, .2);
     }
+
     .testimonial-card::before {
       content: '⭐⭐⭐⭐⭐';
       display: block;
       margin-bottom: 1vw;
       font-size: 1.5vw;
     }
+
     .testimonial-card:hover {
       transform: translateY(-1vw) scale(1.02);
       border-color: var(--rose-gold);
     }
+
     .testimonial-text {
       font-style: italic;
       margin-bottom: 1.5vw;
-      color: rgba(247,231,206,.85);
+      color: rgba(247, 231, 206, .85);
       line-height: 1.7;
       font-size: 1.2vw;
       font-weight: 300;
     }
+
     .testimonial-author {
       font-weight: 600;
       color: var(--blush);
       font-size: 1.2vw;
       letter-spacing: 0.15vw;
     }
+
     .connect-me {
       padding: 4vw;
-      background: linear-gradient(135deg, rgba(107,27,61,.9) 0%, rgba(183,110,121,.8) 100%), url('https://images.unsplash.com/photo-1519643381402-8cd0e6650b99?w=1200') center/cover no-repeat;
+      background: linear-gradient(135deg, rgba(107, 27, 61, .9) 0%, rgba(183, 110, 121, .8) 100%), url('https://images.unsplash.com/photo-1519643381402-8cd0e6650b99?w=1200') center/cover no-repeat;
       margin: 2vw;
       border-radius: 1.5vw;
-      box-shadow: 0 0.5vw 2vw rgba(0,0,0,.4);
+      box-shadow: 0 0.5vw 2vw rgba(0, 0, 0, .4);
       text-align: center;
-      border: 0.2vw solid rgba(183,110,121,.3);
+      border: 0.2vw solid rgba(183, 110, 121, .3);
       backdrop-filter: blur(1vw);
     }
+
     .connect-me h2 {
       margin-bottom: 1.5vw;
       font-size: 3vw;
       color: var(--champagne);
     }
+
     .connect-form {
       max-width: 500px;
       margin: 0 auto;
@@ -473,32 +580,37 @@
       flex-direction: column;
       gap: 1.5vw;
     }
+
     .connect-form input,
     .connect-form textarea {
       padding: 1.5vw 2vw;
-      border: 0.2vw solid rgba(183,110,121,.3);
+      border: 0.2vw solid rgba(183, 110, 121, .3);
       border-radius: 1vw;
       font-size: 1.4vw;
-      background: rgba(247,231,206,.08);
+      background: rgba(247, 231, 206, .08);
       color: var(--champagne);
       font-family: 'Poppins', sans-serif;
       transition: all .3s;
     }
+
     .connect-form input:focus,
     .connect-form textarea:focus {
       outline: none;
       border-color: var(--rose-gold);
-      background: rgba(247,231,206,.12);
-      box-shadow: 0 0 1.5vw rgba(183,110,121,.4);
+      background: rgba(247, 231, 206, .12);
+      box-shadow: 0 0 1.5vw rgba(183, 110, 121, .4);
     }
+
     .connect-form input::placeholder,
     .connect-form textarea::placeholder {
-      color: rgba(247,231,206,.5);
+      color: rgba(247, 231, 206, .5);
     }
+
     .connect-form textarea {
       resize: vertical;
       min-height: 8vw;
     }
+
     .connect-form button {
       padding: 1.5vw 4vw;
       background: linear-gradient(135deg, var(--rose-gold) 0%, var(--burgundy) 100%);
@@ -510,12 +622,14 @@
       font-weight: 600;
       letter-spacing: 0.12vw;
       transition: all .4s;
-      box-shadow: 0 0.5vw 2vw rgba(183,110,121,.5);
+      box-shadow: 0 0.5vw 2vw rgba(183, 110, 121, .5);
     }
+
     .connect-form button:hover {
       transform: translateY(-0.3vw) scale(1.04);
-      box-shadow: 0 1vw 3vw rgba(183,110,121,.7);
+      box-shadow: 0 1vw 3vw rgba(183, 110, 121, .7);
     }
+
     .modal {
       display: none;
       position: fixed;
@@ -523,15 +637,17 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,.9);
+      background: rgba(0, 0, 0, .9);
       z-index: 2000;
       align-items: center;
       justify-content: center;
       backdrop-filter: blur(0.8vw);
     }
+
     .modal.active {
       display: flex;
     }
+
     .modal-content {
       position: relative;
       width: 100vw;
@@ -540,19 +656,29 @@
       align-items: center;
       justify-content: center;
     }
+
     .modal-image {
       max-width: 90vw;
       max-height: 85vh;
       object-fit: contain;
       border-radius: 1.5vw;
-      box-shadow: 0 0 5vw rgba(183,110,121,.5);
+      box-shadow: 0 0 5vw rgba(183, 110, 121, .5);
       animation: imgZoom .4s ease;
       touch-action: none;
     }
+
     @keyframes imgZoom {
-      from { transform: scale(.8); opacity: .7; }
-      to { transform: scale(1); opacity: 1; }
+      from {
+        transform: scale(.8);
+        opacity: .7;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
+
     .modal-controls {
       position: absolute;
       top: 50%;
@@ -563,10 +689,11 @@
       padding: 0 3vw;
       pointer-events: none;
     }
+
     .modal-control {
-      background: rgba(183,110,121,.4);
+      background: rgba(183, 110, 121, .4);
       backdrop-filter: blur(1vw);
-      border: 0.2vw solid rgba(247,231,206,.5);
+      border: 0.2vw solid rgba(247, 231, 206, .5);
       color: var(--champagne);
       font-size: 3vw;
       width: 5vw;
@@ -580,18 +707,20 @@
       pointer-events: auto;
       z-index: 2100;
     }
+
     .modal-control:hover {
-      background: rgba(183,110,121,.7);
+      background: rgba(183, 110, 121, .7);
       transform: scale(1.2);
-      box-shadow: 0 0 2vw rgba(183,110,121,.8);
+      box-shadow: 0 0 2vw rgba(183, 110, 121, .8);
     }
+
     .close-modal {
       position: absolute;
       top: 2vw;
       right: 2vw;
-      background: rgba(183,110,121,.4);
+      background: rgba(183, 110, 121, .4);
       backdrop-filter: blur(1vw);
-      border: 0.2vw solid rgba(247,231,206,.5);
+      border: 0.2vw solid rgba(247, 231, 206, .5);
       color: var(--champagne);
       font-size: 2vw;
       width: 4vw;
@@ -604,10 +733,12 @@
       justify-content: center;
       z-index: 2100;
     }
+
     .close-modal:hover {
-      background: rgba(183,110,121,.7);
+      background: rgba(183, 110, 121, .7);
       transform: scale(1.15) rotate(90deg);
     }
+
     .toast {
       position: fixed;
       bottom: 2vw;
@@ -626,23 +757,45 @@
       backdrop-filter: blur(0.8vw);
       border: 0.2vw solid rgba(183, 110, 121, 0.3);
     }
+
     .toast.show {
       display: block;
       animation: fadeInOut 3s ease forwards;
     }
+
     @keyframes fadeInOut {
-      0% { opacity: 0; transform: translate(-50%, 2vw); }
-      10% { opacity: 1; transform: translate(-50%, 0); }
-      90% { opacity: 1; transform: translate(-50%, 0); }
-      100% { opacity: 0; transform: translate(-50%, 2vw); }
+      0% {
+        opacity: 0;
+        transform: translate(-50%, 2vw);
+      }
+
+      10% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+
+      90% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(-50%, 2vw);
+      }
     }
+
     @media (max-width: 900px) {
       :root {
         --sidebar-width: 100%;
         --thumb-width: 150px;
         --thumb-height: 165px;
       }
-      body { flex-direction: column; }
+
+      body {
+        flex-direction: column;
+      }
+
       .sidebar {
         position: relative;
         width: 100%;
@@ -653,98 +806,249 @@
         gap: 1vw;
         flex-wrap: wrap;
       }
-      .profile-pic { width: 80px; height: 100px; }
-      .artist-name { font-size: 2vw; margin-top: 0; }
+
+      .profile-pic {
+        width: 80px;
+        height: 100px;
+      }
+
+      .artist-name {
+        font-size: 2vw;
+        margin-top: 0;
+      }
+
       .contact {
         margin-top: 20px;
         font-size: 12px;
       }
+
       .reach-title {
         font-size: 15px;
         margin-bottom: 12px;
       }
+
       .reach-title::before {
         width: 50px;
       }
+
       .contact-links {
         gap: 10px;
       }
+
       .contact-icon {
         width: 18px;
         margin-right: 6px;
         font-size: 13px;
       }
-      .main { margin-left: 0; width: 100%; }
-      .section { padding: 3vw; }
-      .section h2 { font-size: 3.5vw; }
-      .section h2::before { width: 6vw; }
-      .testimonials, .connect-me { margin: 2vw; padding: 3vw; }
-      .banner { height: 25vh; min-height: 150px; max-height: 300px; }
-      .modal-controls { padding: 0 2.5vw; }
-      .modal-control { width: 4.5vw; height: 4.5vw; font-size: 2.5vw; }
-      .toast { width: 80%; font-size: 1.2vw; padding: 1vw 2vw; }
+
+      .main {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      .section {
+        padding: 3vw;
+      }
+
+      .section h2 {
+        font-size: 3.5vw;
+      }
+
+      .section h2::before {
+        width: 6vw;
+      }
+
+      .testimonials,
+      .connect-me {
+        margin: 2vw;
+        padding: 3vw;
+      }
+
+      .banner {
+        height: 25vh;
+        min-height: 150px;
+        max-height: 300px;
+      }
+
+      .modal-controls {
+        padding: 0 2.5vw;
+      }
+
+      .modal-control {
+        width: 4.5vw;
+        height: 4.5vw;
+        font-size: 2.5vw;
+      }
+
+      .toast {
+        width: 80%;
+        font-size: 1.2vw;
+        padding: 1vw 2vw;
+      }
     }
+
     @media (max-width: 600px) {
       :root {
         --thumb-width: 120px;
         --thumb-height: 130px;
       }
-      .menu-toggle { display: flex; }
+
+      .menu-toggle {
+        display: flex;
+      }
+
       .sidebar {
         position: fixed;
         height: 100%;
         transform: translateX(-100%);
         padding: 2vw 1.5vw;
       }
+
       .sidebar.active {
         transform: translateX(0);
       }
+
       .contact {
         margin-top: 16px;
         font-size: 11px;
       }
+
       .reach-title {
         font-size: 14px;
         margin-bottom: 10px;
       }
+
       .reach-title::before {
         width: 40px;
       }
+
       .contact-links {
         gap: 8px;
       }
+
       .contact-icon {
         width: 16px;
         margin-right: 5px;
         font-size: 12px;
       }
-      .main { margin-left: 0; width: 100%; }
-      .banner { height: 20vh; min-height: 120px; max-height: 250px; }
-      .section { padding: 3vw; }
-      .section h2 { font-size: 4.5vw; }
-      .section h2::before { width: 8vw; }
-      .section-subtitle { font-size: 1.5vw; }
-      .gallery { padding: 2vw; border-radius: 1.5vw; }
-      .thumb { margin-right: 0.8vw; }
-      .testimonials { padding: 3vw; margin: 2vw; border-radius: 1.5vw; }
-      .testimonials h2 { font-size: 4vw; }
-      .testimonial-grid { grid-template-columns: 1fr; gap: 2vw; }
-      .testimonial-card { padding: 2vw; border-radius: 1vw; }
-      .testimonial-text { font-size: 1.8vw; }
-      .testimonial-author { font-size: 1.8vw; }
-      .connect-me { padding: 3vw; margin: 2vw; border-radius: 1.5vw; }
-      .connect-me h2 { font-size: 4vw; }
-      .connect-form { max-width: 90%; gap: 1.5vw; }
+
+      .main {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      .banner {
+        height: 20vh;
+        min-height: 120px;
+        max-height: 250px;
+      }
+
+      .section {
+        padding: 3vw;
+      }
+
+      .section h2 {
+        font-size: 4.5vw;
+      }
+
+      .section h2::before {
+        width: 8vw;
+      }
+
+      .section-subtitle {
+        font-size: 1.5vw;
+      }
+
+      .gallery {
+        padding: 2vw;
+        border-radius: 1.5vw;
+      }
+
+      .thumb {
+        margin-right: 0.8vw;
+      }
+
+      .testimonials {
+        padding: 3vw;
+        margin: 2vw;
+        border-radius: 1.5vw;
+      }
+
+      .testimonials h2 {
+        font-size: 4vw;
+      }
+
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 2vw;
+      }
+
+      .testimonial-card {
+        padding: 2vw;
+        border-radius: 1vw;
+      }
+
+      .testimonial-text {
+        font-size: 1.8vw;
+      }
+
+      .testimonial-author {
+        font-size: 1.8vw;
+      }
+
+      .connect-me {
+        padding: 3vw;
+        margin: 2vw;
+        border-radius: 1.5vw;
+      }
+
+      .connect-me h2 {
+        font-size: 4vw;
+      }
+
+      .connect-form {
+        max-width: 90%;
+        gap: 1.5vw;
+      }
+
       .connect-form input,
-      .connect-form textarea { padding: 1.5vw 2vw; font-size: 1.6vw; }
-      .connect-form textarea { min-height: 10vw; }
-      .connect-form button { padding: 1.5vw 4vw; font-size: 1.8vw; }
-      .modal-control { width: 5vw; height: 5vw; font-size: 2.5vw; }
-      .close-modal { top: 2vw; right: 2vw; width: 4vw; height: 4vw; font-size: 2vw; }
-      .toast { bottom: 2vw; font-size: 1.6vw; padding: 1.5vw 2.5vw; }
+      .connect-form textarea {
+        padding: 1.5vw 2vw;
+        font-size: 1.6vw;
+      }
+
+      .connect-form textarea {
+        min-height: 10vw;
+      }
+
+      .connect-form button {
+        padding: 1.5vw 4vw;
+        font-size: 1.8vw;
+      }
+
+      .modal-control {
+        width: 5vw;
+        height: 5vw;
+        font-size: 2.5vw;
+      }
+
+      .close-modal {
+        top: 2vw;
+        right: 2vw;
+        width: 4vw;
+        height: 4vw;
+        font-size: 2vw;
+      }
+
+      .toast {
+        bottom: 2vw;
+        font-size: 1.6vw;
+        padding: 1.5vw 2.5vw;
+      }
     }
   </style>
 </head>
+
 <body>
   <!-- menu toggle updated: no inline onclick, added aria attributes -->
   <button id="menuToggle" class="menu-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Open menu">
@@ -753,14 +1057,18 @@
 
   <aside id="sidebar" class="sidebar" role="navigation" aria-label="Main sidebar">
     <div class="profile-pic">
-      <img src="https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/IMG_6311.jpg" alt="Your Name">
+      <img src="https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/IMG_6311.jpg"
+        alt="Your Name">
     </div>
     <div class="artist-name">Supriya.S</div>
     <div class="social-icons">
-      <a href="https://wa.me/917981672217" target="_blank" class="whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://wa.me/917981672217" target="_blank" class="whatsapp" aria-label="WhatsApp"><i
+          class="fab fa-whatsapp"></i></a>
       <a href="mailto:Mua.supriya15@gmail.com" class="mail" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.instagram.com/mua_supriya15/" target="_blank" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@SupriyaMua15" target="_blank" class="youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/mua_supriya15/" target="_blank" class="instagram" aria-label="Instagram"><i
+          class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@SupriyaMua15" target="_blank" class="youtube" aria-label="YouTube"><i
+          class="fab fa-youtube"></i></a>
     </div>
     <div class="contact">
       <p class="reach-title">For bookings, please contact us via</p>
@@ -774,7 +1082,9 @@
   <div class="main">
     <div class="banner">
       <video autoplay muted loop playsinline>
-        <source src="https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/3bc2b99e-2eab-4bda-a351-bf8c3f59621c_fullscreen.mp4" type="video/mp4">
+        <source
+          src="https://raw.githubusercontent.com/kishore1999-commits/makeup-artist-images/main/3bc2b99e-2eab-4bda-a351-bf8c3f59621c_fullscreen.mp4"
+          type="video/mp4">
       </video>
     </div>
     <!-- Bridal Section -->
@@ -836,17 +1146,17 @@
     <footer class="footer">
       <h3>Connect With Me</h3>
       <div class="social-icons">
-        <a href="https://wa.me/917981672217" target="_blank" class="whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://wa.me/917981672217" target="_blank" class="whatsapp" aria-label="WhatsApp"><i
+            class="fab fa-whatsapp"></i></a>
         <a href="mailto:Mua.supriya15@gmail.com" class="mail" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.instagram.com/mua_supriya15/" target="_blank" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.youtube.com/@SupriyaMua15" target="_blank" class="youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.instagram.com/mua_supriya15/" target="_blank" class="instagram" aria-label="Instagram"><i
+            class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@SupriyaMua15" target="_blank" class="youtube" aria-label="YouTube"><i
+            class="fab fa-youtube"></i></a>
       </div>
       <div class="footer-contact">
         <a href="mailto:Mua.supriya15@gmail.com">Mua.supriya15@gmail.com</a> |
         <a href="tel:+917981672217">+91 7981672217</a>
-      </div>
-      <div class="footer-copyright">
-        © 2026 Supriya.S - Telugu Bridal Artistry. All rights reserved.
       </div>
     </footer>
   </div>
@@ -1071,7 +1381,7 @@
         const idx = i % totalItems;
         const thumbDiv = document.createElement('div');
         thumbDiv.className = 'thumb';
-        thumbDiv.addEventListener('click', function() {
+        thumbDiv.addEventListener('click', function () {
           openImage(idx, galleryType);
         });
         const img = document.createElement('img');
@@ -1334,4 +1644,5 @@
     })();
   </script>
 </body>
+
 </html>
